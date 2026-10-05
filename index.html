@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marwadi University | Computer Engineering Department</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B2545;
+    --navy-deep:#081B33;
+    --teal:#0FA3A3;
+    --amber:#F2A154;
+    --bg-soft:#EEF3F8;
+    --ink:#1C2B3A;
+  }
+  body{
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    background-color:#FFFFFF;
+  }
+  h1,h2,h3,h4,h5,.navbar-brand{
+    font-family:'Poppins',sans-serif;
+  }
+  .navbar-dept{
+    background-color:var(--navy);
+  }
+  .navbar-dept .navbar-brand{
+    color:#fff;
+    letter-spacing:.3px;
+  }
+  .navbar-dept .navbar-brand small{
+    display:block;
+    font-family:'Inter',sans-serif;
+    font-size:.7rem;
+    font-weight:400;
+    color:#AFC6E0;
+  }
+  .navbar-dept .nav-link{
+    color:#DCE8F5;
+    font-weight:500;
+    margin:0 .25rem;
+    position:relative;
+  }
+  .navbar-dept .nav-link:hover,
+  .navbar-dept .nav-link:focus{
+    color:#fff;
+  }
+  .navbar-dept .nav-link::after{
+    content:"";
+    position:absolute;
+    left:0; bottom:2px;
+    width:0;
+    height:2px;
+    background:var(--teal);
+    transition:width .25s ease;
+  }
+  .navbar-dept .nav-link:hover::after{
+    width:100%;
+  }
+  section{
+    scroll-margin-top:70px;
+  }
+  .hero-section{
+    background:linear-gradient(135deg,var(--bg-soft) 0%,#E4EEF7 100%);
+  }
+  .eyebrow-chip{
+    display:inline-block;
+    background:rgba(15,163,163,.12);
+    color:var(--teal);
+    font-weight:600;
+    font-size:.8rem;
+    padding:.35rem .9rem;
+    border-radius:50px;
+  }
+  .btn-navy{
+    background-color:var(--navy);
+    color:#fff;
+    border:none;
+  }
+  .btn-navy:hover{
+    background-color:var(--navy-deep);
+    color:#fff;
+  }
+  .btn-outline-teal{
+    border:1.5px solid var(--teal);
+    color:var(--teal);
+  }
+  .btn-outline-teal:hover{
+    background-color:var(--teal);
+    color:#fff;
+  }
+  .glance-card{
+    border-radius:18px;
+    border:1px solid #E3ECF4;
+  }
+  .glance-card .stat-row + .stat-row{
+    border-top:1px dashed #E3ECF4;
+  }
+  .stat-strip{
+    background-color:var(--navy-deep);
+  }
+  .stat-strip .stat-box{
+    border-radius:14px;
+    background-color:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.12);
+  }
+  .stat-strip .stat-box h3{
+    color:var(--amber);
+  }
+  .accent-bar{
+    width:52px;
+    height:4px;
+    border-radius:3px;
+    background-color:var(--teal);
+  }
+  .vision-card{
+    border-radius:20px;
+    background:var(--navy);
+    color:#fff;
+  }
+  .mission-item{
+    border-radius:14px;
+    border:1px solid #E3ECF4;
+    background:#fff;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .mission-item:hover{
+    transform:translateY(-4px);
+    box-shadow:0 10px 24px rgba(11,37,69,.08);
+  }
+  .mission-num{
+    width:34px;height:34px;
+    border-radius:50%;
+    background:var(--teal);
+    color:#fff;
+    font-weight:700;
+    font-size:.9rem;
+  }
+  .pso-card{
+    border-radius:18px;
+    border-top:4px solid var(--amber);
+    background:#fff;
+    box-shadow:0 6px 18px rgba(11,37,69,.06);
+  }
+  .pso-card:nth-child(2){
+    border-top-color:var(--teal);
+  }
+  .course-card{
+    border-radius:18px;
+    border:1px solid #E3ECF4;
+    transition:transform .2s ease, box-shadow .2s ease;
+    background:#fff;
+  }
+  .course-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 14px 28px rgba(11,37,69,.1);
+  }
+  .course-tag{
+    width:46px;height:46px;
+    border-radius:12px;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;
+    color:#fff;
+    background:var(--navy);
+  }
+  .gallery-card{
+    border-radius:16px;
+    overflow:hidden;
+    border:none;
+    box-shadow:0 6px 16px rgba(11,37,69,.08);
+    transition:transform .25s ease;
+  }
+  .gallery-card:hover{
+    transform:translateY(-5px);
+  }
+  .gallery-card img{
+    height:210px;
+    object-fit:cover;
+  }
+  .gallery-highlight{
+    border-radius:16px;
+    background:linear-gradient(135deg,var(--teal),var(--navy));
+    color:#fff;
+  }
+  .recruiter-chip{
+    border-radius:14px;
+    border:1.5px solid #DCE6F0;
+    background:#fff;
+    transition:all .2s ease;
+  }
+  .recruiter-chip:hover{
+    border-color:var(--teal);
+    background:rgba(15,163,163,.06);
+    transform:translateY(-3px);
+  }
+  footer.site-footer{
+    background-color:var(--navy-deep);
+    border-top:3px solid var(--teal);
+  }
+</style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark navbar-dept sticky-top">
+<div class="container">
+<a class="navbar-brand fw-bold" href="#home">MARWADI UNIVERSITY<small>Computer Engineering Department</small></a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#deptMenu">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="deptMenu">
+<ul class="navbar-nav ms-auto">
+<li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="#vision">Vision</a></li>
+<li class="nav-item"><a class="nav-link" href="#mission">Mission</a></li>
+<li class="nav-item"><a class="nav-link" href="#psos">PSOs</a></li>
+<li class="nav-item"><a class="nav-link" href="#courses">Courses</a></li>
+<li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+<li class="nav-item"><a class="nav-link" href="#recruiters">Recruiters</a></li>
+</ul>
+</div>
+</div>
+</nav>
+
+<!-- Home -->
+<section id="home" class="hero-section py-5">
+<div class="container py-4">
+<div class="row align-items-center g-4">
+<div class="col-lg-7">
+<span class="eyebrow-chip">Faculty of Engineering &amp; Technology</span>
+<h1 class="fw-bold mt-3" style="color:var(--navy);">
+Computer Engineering, <span style="color:var(--teal);">built</span> for the next decade.
+</h1>
+<p class="text-secondary mt-3 fs-5">
+The Computer Engineering Department at Marwadi University blends strong academics,
+industry-relevant skills and a research mindset to prepare engineers for real-world challenges.
+</p>
+<div class="d-flex flex-wrap gap-2 mt-4">
+<a href="#courses" class="btn btn-navy px-4 py-2">Explore Courses</a>
+<a href="#gallery" class="btn btn-outline-teal px-4 py-2">View Gallery</a>
+</div>
+</div>
+
+<div class="col-lg-5">
+<div class="card glance-card shadow-sm">
+<div class="card-body p-4">
+<p class="text-uppercase fw-bold mb-1" style="color:var(--teal); font-size:.8rem;">Rajkot, Gujarat</p>
+<h4 class="fw-bold" style="color:var(--navy);">Department at a Glance</h4>
+<div class="mt-3">
+<div class="d-flex justify-content-between py-2 stat-row"><span>Programs Offered</span><strong style="color:var(--navy);">4</strong></div>
+<div class="d-flex justify-content-between py-2 stat-row"><span>Top Recruiters</span><strong style="color:var(--navy);">7+</strong></div>
+<div class="d-flex justify-content-between py-2 stat-row"><span>Program Outcomes</span><strong style="color:var(--navy);">2 PSOs</strong></div>
+<div class="d-flex justify-content-between py-2 stat-row"><span>Accreditation</span><strong style="color:var(--navy);">NAAC A+</strong></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Quick stat strip -->
+<section class="stat-strip py-4">
+<div class="container">
+<div class="row g-3 text-center text-white">
+<div class="col-6 col-md-3"><div class="stat-box p-3 h-100"><h3 class="fw-bold mb-0">4</h3><small>Degree Programs</small></div></div>
+<div class="col-6 col-md-3"><div class="stat-box p-3 h-100"><h3 class="fw-bold mb-0">2</h3><small>Program Outcomes</small></div></div>
+<div class="col-6 col-md-3"><div class="stat-box p-3 h-100"><h3 class="fw-bold mb-0">6</h3><small>Gallery Highlights</small></div></div>
+<div class="col-6 col-md-3"><div class="stat-box p-3 h-100"><h3 class="fw-bold mb-0">7+</h3><small>Top Recruiters</small></div></div>
+</div>
+</div>
+</section>
+
+<!-- Vision -->
+<section id="vision" class="py-5">
+<div class="container">
+<div class="row g-4 align-items-stretch">
+<div class="col-lg-5">
+<div class="card vision-card h-100 border-0">
+<div class="card-body p-4 p-lg-5">
+<div class="accent-bar mb-3" style="background-color:var(--amber);"></div>
+<p class="text-uppercase fw-bold mb-2" style="color:var(--amber); font-size:.8rem;">Our Direction</p>
+<h2 class="fw-bold">Vision</h2>
+<p class="mb-0" style="color:#CBD9E8;">
+To impart quality technical education through research, innovation, and teamwork
+for creating professionally superior and ethically strong manpower that meets the
+global challenges of engineering industries and research organizations.
+</p>
+</div>
+</div>
+</div>
+<div class="col-lg-7">
+<div class="row g-3 h-100">
+<div class="col-12">
+<div class="p-4 rounded-4 h-100" style="background-color:var(--bg-soft);">
+<h5 class="fw-bold" style="color:var(--navy);">Why it matters</h5>
+<p class="text-secondary mb-0">
+Our vision guides every course, lab and activity in the department &mdash; from
+foundational programming to advanced research in cybersecurity, AR/VR and IoT,
+ensuring graduates are ready for global engineering careers.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Mission -->
+<section id="mission" class="py-5" style="background-color:var(--bg-soft);">
+<div class="container">
+<div class="row mb-4">
+<div class="col-lg-7">
+<div class="accent-bar mb-3"></div>
+<p class="text-uppercase fw-bold mb-1" style="color:var(--teal); font-size:.8rem;">Our Commitment</p>
+<h2 class="fw-bold" style="color:var(--navy);">Mission</h2>
+</div>
+</div>
+<div class="row g-3">
+<div class="col-md-6">
+<div class="mission-item p-3 d-flex gap-3 h-100">
+<div class="mission-num d-flex align-items-center justify-content-center flex-shrink-0">1</div>
+<p class="mb-0 text-secondary">Maintain state-of-the-art ICT enabled teaching and learning methodologies.</p>
+</div>
+</div>
+<div class="col-md-6">
+<div class="mission-item p-3 d-flex gap-3 h-100">
+<div class="mission-num d-flex align-items-center justify-content-center flex-shrink-0">2</div>
+<p class="mb-0 text-secondary">Enable graduates to become digital age literates, innovators, and professionals.</p>
+</div>
+</div>
+<div class="col-md-6">
+<div class="mission-item p-3 d-flex gap-3 h-100">
+<div class="mission-num d-flex align-items-center justify-content-center flex-shrink-0">3</div>
+<p class="mb-0 text-secondary">Provide skills, knowledge, and attitudes for success as engineers, leaders, and entrepreneurs.</p>
+</div>
+</div>
+<div class="col-md-6">
+<div class="mission-item p-3 d-flex gap-3 h-100">
+<div class="mission-num d-flex align-items-center justify-content-center flex-shrink-0">4</div>
+<p class="mb-0 text-secondary">Prepare graduates for lifelong learning and career challenges.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- PSOs -->
+<section id="psos" class="py-5">
+<div class="container">
+<div class="row align-items-center mb-4">
+<div class="col-md-8">
+<div class="accent-bar mb-3" style="background-color:var(--amber);"></div>
+<p class="text-uppercase fw-bold mb-1" style="color:var(--amber); font-size:.8rem;">Student Outcomes</p>
+<h2 class="fw-bold" style="color:var(--navy);">Program Specific Outcomes (PSOs)</h2>
+</div>
+</div>
+<div class="row g-4">
+<div class="col-md-6">
+<div class="pso-card p-4 h-100">
+<span class="badge" style="background-color:var(--amber);">PSO 01</span>
+<h5 class="fw-bold mt-3" style="color:var(--navy);">Engineering Application</h5>
+<p class="text-secondary mb-0">Apply knowledge and competence in the design and development of computer-based systems addressing industrial and social needs.</p>
+</div>
+</div>
+<div class="col-md-6">
+<div class="pso-card p-4 h-100">
+<span class="badge" style="background-color:var(--teal);">PSO 02</span>
+<h5 class="fw-bold mt-3" style="color:var(--navy);">Emerging Technology</h5>
+<p class="text-secondary mb-0">Adapt to emerging technological advancements including cybersecurity, AR/VR, and IoT.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Courses -->
+<section id="courses" class="py-5" style="background-color:var(--bg-soft);">
+<div class="container">
+<div class="text-center mb-5">
+<div class="accent-bar mx-auto mb-3"></div>
+<p class="text-uppercase fw-bold mb-1" style="color:var(--teal); font-size:.8rem;">Academic Programs</p>
+<h2 class="fw-bold" style="color:var(--navy);">Courses Offered</h2>
+</div>
+<div class="row g-4">
+<div class="col-sm-6 col-lg-3">
+<div class="course-card p-4 h-100">
+<div class="course-tag">B</div>
+<h5 class="fw-bold mt-3 mb-1" style="color:var(--navy);">B.Tech</h5>
+<p class="text-secondary small mb-0">Computer Engineering</p>
+</div>
+</div>
+<div class="col-sm-6 col-lg-3">
+<div class="course-card p-4 h-100">
+<div class="course-tag" style="background-color:var(--teal);">C</div>
+<h5 class="fw-bold mt-3 mb-1" style="color:var(--navy);">B.Tech</h5>
+<p class="text-secondary small mb-0">Cyber Security</p>
+</div>
+</div>
+<div class="col-sm-6 col-lg-3">
+<div class="course-card p-4 h-100">
+<div class="course-tag" style="background-color:var(--amber);">M</div>
+<h5 class="fw-bold mt-3 mb-1" style="color:var(--navy);">M.Tech</h5>
+<p class="text-secondary small mb-0">Computer Engineering</p>
+</div>
+</div>
+<div class="col-sm-6 col-lg-3">
+<div class="course-card p-4 h-100">
+<div class="course-tag" style="background-color:#6C4AB6;">P</div>
+<h5 class="fw-bold mt-3 mb-1" style="color:var(--navy);">Ph.D.</h5>
+<p class="text-secondary small mb-0">Computer Science &amp; Engineering</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Gallery -->
+<section id="gallery" class="py-5">
+<div class="container">
+<div class="mb-4">
+<div class="accent-bar mb-3" style="background-color:var(--amber);"></div>
+<p class="text-uppercase fw-bold mb-1" style="color:var(--amber); font-size:.8rem;">Campus Life</p>
+<h2 class="fw-bold" style="color:var(--navy);">Image Gallery &amp; Events</h2>
+<p class="text-secondary">A glimpse of activities and celebrations across the department.</p>
+</div>
+<div class="row g-4">
+<div class="col-md-6 col-lg-4">
+<div class="card gallery-card h-100">
+<img src="https://picsum.photos/seed/mu-campus/700/450" class="img-fluid" alt="Marwadi University campus building">
+<div class="card-body"><h6 class="fw-bold mb-1">Campus Day</h6><p class="text-secondary small mb-0">Student activities across campus.</p></div>
+</div>
+</div>
+<div class="col-md-6 col-lg-4">
+<div class="card gallery-card h-100">
+<img src="https://picsum.photos/seed/mu-sports/700/450" class="img-fluid" alt="Students participating in a sports meet">
+<div class="card-body"><h6 class="fw-bold mb-1">Sports Meet</h6><p class="text-secondary small mb-0">Events encouraging teamwork.</p></div>
+</div>
+</div>
+<div class="col-md-6 col-lg-4">
+<div class="card gallery-card h-100">
+<img src="https://picsum.photos/seed/mu-culture/700/450" class="img-fluid" alt="Students performing at a cultural event">
+<div class="card-body"><h6 class="fw-bold mb-1">Cultural Event</h6><p class="text-secondary small mb-0">Cultural programs and performances.</p></div>
+</div>
+</div>
+<div class="col-md-6 col-lg-4">
+<div class="card gallery-card h-100">
+<img src="https://picsum.photos/seed/mu-fest/700/450" class="img-fluid" alt="Students celebrating at the university fest">
+<div class="card-body"><h6 class="fw-bold mb-1">University Fest</h6><p class="text-secondary small mb-0">Celebrations across the campus.</p></div>
+</div>
+</div>
+<div class="col-md-6 col-lg-4">
+<div class="card gallery-card h-100">
+<img src="https://picsum.photos/seed/mu-club/700/450" class="img-fluid" alt="Members of a student club at a meeting">
+<div class="card-body"><h6 class="fw-bold mb-1">Student Clubs</h6><p class="text-secondary small mb-0">Clubs supporting student interests.</p></div>
+</div>
+</div>
+<div class="col-md-6 col-lg-4">
+<div class="card gallery-highlight h-100 border-0">
+<div class="card-body p-4 d-flex flex-column justify-content-center">
+<span class="badge bg-light text-dark align-self-start">Featured</span>
+<h5 class="fw-bold mt-3">Workshops &amp; Seminars</h5>
+<p class="mb-0">Technical sessions and hands-on workshops that add to the learning experience.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Recruiters -->
+<section id="recruiters" class="py-5" style="background-color:var(--bg-soft);">
+<div class="container">
+<div class="text-center mb-5">
+<div class="accent-bar mx-auto mb-3"></div>
+<p class="text-uppercase fw-bold mb-1" style="color:var(--teal); font-size:.8rem;">Career Opportunities</p>
+<h2 class="fw-bold" style="color:var(--navy);">Top Recruiters</h2>
+<p class="text-secondary">Companies that regularly recruit from the department.</p>
+</div>
+<div class="row g-3 justify-content-center">
+<div class="col-6 col-md-4 col-lg-3"><div class="recruiter-chip p-4 text-center"><h6 class="fw-bold mb-0" style="color:var(--navy);">TCS</h6></div></div>
+<div class="col-6 col-md-4 col-lg-3"><div class="recruiter-chip p-4 text-center"><h6 class="fw-bold mb-0" style="color:var(--navy);">Infosys</h6></div></div>
+<div class="col-6 col-md-4 col-lg-3"><div class="recruiter-chip p-4 text-center"><h6 class="fw-bold mb-0" style="color:var(--navy);">Capgemini</h6></div></div>
+<div class="col-6 col-md-4 col-lg-3"><div class="recruiter-chip p-4 text-center"><h6 class="fw-bold mb-0" style="color:var(--navy);">Wipro</h6></div></div>
+<div class="col-6 col-md-4 col-lg-3"><div class="recruiter-chip p-4 text-center"><h6 class="fw-bold mb-0" style="color:var(--navy);">LTIMindtree</h6></div></div>
+<div class="col-6 col-md-4 col-lg-3"><div class="recruiter-chip p-4 text-center"><h6 class="fw-bold mb-0" style="color:var(--navy);">Cognizant</h6></div></div>
+<div class="col-6 col-md-4 col-lg-3"><div class="recruiter-chip p-4 text-center"><h6 class="fw-bold mb-0" style="color:var(--navy);">Reliance Industries</h6></div></div>
+</div>
+</div>
+</section>
+
+<footer class="site-footer py-4 text-white">
+<div class="container text-center">
+<h5 class="fw-bold mb-1">Marwadi University</h5>
+<p class="mb-1" style="color:#AFC6E0;">Computer Engineering Department</p>
+<p class="mb-1" style="color:#AFC6E0;">Rajkot, Gujarat, India</p>
+<p class="mb-0" style="color:#7E97B3;">&copy; 2026 Computer Engineering Department, Marwadi University. All Rights Reserved.</p>
+</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
